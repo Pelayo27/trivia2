@@ -61,34 +61,44 @@ def seleccionarRespuesta(r):
     return rep
 
 
-y = 0
-puntaje = 0
-descuento = 0
-input('Enter para continuar')
-try:
-    while y < len(questions):
-        print(BLUE)
-        mostrarPreguntas(y + 1)
-        print('')
-        print(RESET)
-        select = seleccionarRespuesta(y)
-        if select.get('success') or select.get('incorrect'):
-            if select.get('success'):
-                print(GREEN +select['success'])
-                puntaje += 5
-            else:
-                print(RED+select['incorrect']+RESET)
-                descuento += 1
-            y += 1
-        else:
-            print(select['error'])
-            print('\n')
-            y = y
-        print(f" {GREEN}Puntaje obtenido hasta el momento: {puntaje}")
-        print(f" {RED}Puntaje en contra: -{descuento}\n {RESET}")
-        time.sleep(2)
-except:
-    print(RED + 'Pasó un error inesperado')
 
-print(f" {CYAN} Puntaje obtenido: {(puntaje-descuento)}")
-print(f"Respuesta incorrectas: {descuento}")
+
+continuar=True
+while continuar:
+    input('Enter para continuar')
+    try:
+        y = 0
+        puntaje = 0
+        descuento = 0
+        while y < len(questions):
+            print(BLUE)
+            mostrarPreguntas(y + 1)
+            print(RESET)
+            select = seleccionarRespuesta(y)
+            if select.get('success') or select.get('incorrect'):
+                if select.get('success'):
+                    print(GREEN +select['success'])
+                    puntaje += 5
+                else:
+                    print(RED+select['incorrect']+RESET)
+                    descuento += 1
+                y += 1
+            else:
+                print(select['error'])
+                print('\n')
+                y = y
+            print(f" {GREEN}Puntaje obtenido hasta el momento: {puntaje}")
+            print(f" {RED}Puntaje en contra: -{descuento}\n {RESET}")
+            time.sleep(2)
+    except:
+        print(RED + 'Pasó un error inesperado')
+    print(f" {CYAN} Puntaje obtenido: {(puntaje-descuento)}")
+    print(f"Respuesta incorrectas: {descuento} \n")
+    respta=input("Escribe 'si/yes' para seguir jugando o para terminar cualquier tecla: ")
+    if respta in ('si','SI','Si','yes','YES'):
+        continuar=True
+        print('Genial!!, Seguiremos jugando')
+        time.sleep(2)
+    else:
+        continuar=False
+        print('Gracias...!!, hasta pronto')
