@@ -1,4 +1,5 @@
 # ********************CULTURA GENERAL *****************
+import time
 BLACK = '\033[30m'
 RED = '\033[31m'
 GREEN = '\033[32m'
@@ -18,7 +19,6 @@ name = input('Ingrese tu nombre: ')
 print(
     f" \nHola, {name}, reponde las sigientes preguntas, escribiendo la letra de la alternativa y presione Enter para enviar tu respuesta!...."
 )
-print(BLUE)
 questions = {
     1:
     '¿Cuál es el nombre oficial del país? \na) Estados peruanos\nb) República del Perú \nc) Reino del Perú\nd) Estado del Perú',
@@ -63,12 +63,14 @@ def seleccionarRespuesta(r):
 
 y = 0
 puntaje = 0
-decuento = 0
-input('Enter para continuar \n')
+descuento = 0
+input('Enter para continuar')
 try:
     while y < len(questions):
+        print(BLUE)
         mostrarPreguntas(y + 1)
         print('\n')
+        print(RESET)
         select = seleccionarRespuesta(y)
         if select.get('success') or select.get('incorrect'):
             if select.get('success'):
@@ -76,16 +78,17 @@ try:
                 puntaje += 5
             else:
                 print(select['incorrect'])
-                decuento += 1
+                descuento += 1
             y += 1
         else:
             print(select['error'])
             print('\n')
             y = y
+        print(f" {GREEN}Puntaje obtenido hasta el momento: {puntaje}")
+        print(f" {RED}Puntaje en contra: -{descuento}\n {RESET}")
+        time.sleep(2)
 except:
     print(RED + 'Pasó un error inesperado')
 
-print(f''' {CYAN}
-Puntaje obtenido: {puntaje-decuento} \n
-Respuesta incorrectas: {decuento}
-''')
+print(f" {CYAN} Puntaje obtenido: {(puntaje-descuento)}")
+print(f"Respuesta incorrectas: {descuento}")
