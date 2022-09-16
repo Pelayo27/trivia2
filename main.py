@@ -11,12 +11,12 @@ RESET = '\033[39m'
 
 print('****************' + RED + 'TRIVIA DE CULTURA GENERAL' + RESET +
       '*************\n')
-print('Bievenidos a mi trivi sobre CULTURA GENERAL DEL PERÚ')
-print('Podremos a prueba tus conocimiento \n')
+print('Bievenidos a mi trivia sobre CULTURA GENERAL DEL PERÚ')
+print('Podremos a prueba tus conocimientos \n')
 
-name = input('Ingres tu nombre:')
+name = input('Ingrese tu nombre: ')
 print(
-    f" \nHola, {name}, reponde las sigientes preguntas escribiendo la letra de la alternativa y presione Enter para enviar tu respuesta!...."
+    f" \nHola, {name}, reponde las sigientes preguntas, escribiendo la letra de la alternativa y presione Enter para enviar tu respuesta!...."
 )
 print(BLUE)
 questions = {
