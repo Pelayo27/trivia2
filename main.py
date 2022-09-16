@@ -69,15 +69,15 @@ try:
     while y < len(questions):
         print(BLUE)
         mostrarPreguntas(y + 1)
-        print('\n')
+        print('')
         print(RESET)
         select = seleccionarRespuesta(y)
         if select.get('success') or select.get('incorrect'):
             if select.get('success'):
-                print(select['success'])
+                print(GREEN +select['success'])
                 puntaje += 5
             else:
-                print(select['incorrect'])
+                print(RED+select['incorrect']+RESET)
                 descuento += 1
             y += 1
         else:
